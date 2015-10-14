@@ -1,0 +1,38 @@
+!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas" style="border:1px solid #c3c3c3;">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script src="js/Canvas.js"></script>
+<script src="js/Game.js"></script>
+<script src="js/GameObject.js"></script>
+<script src="js/Input.js"></script>
+<script src="js/Event.js"></script>
+
+<script>
+    (function() {
+        var game = Game.getInstance(),
+            width = 600,
+            height = 600,
+            fps = 60;
+        game.init('canvas', 'My Game Name', width, height);
+
+        window.setInterval(
+                (function(self) {
+                    return function(){
+                        self.loop();
+                    }
+                })(game), 1000/fps
+        );
+    })();
+</script>
